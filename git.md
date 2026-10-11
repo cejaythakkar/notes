@@ -23,3 +23,7 @@ git log --pretty=oneline
 git log --pretty=format:"%h - %an,%ar:%s"
 git show 089f659:git.md
 git log -S "made changes by mistake and added in the staging area"
+git log grep="fifth"
+git log --since="2025-01-01"
+git log --until="2025-01-01"
+git log --author="cejaythakkar"
