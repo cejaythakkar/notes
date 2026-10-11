@@ -1,0 +1,274 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #172026;
+  background: #f7f9fb;
+}
+
+.navbar {
+  width: 100%;
+  padding: 22px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f766e;
+}
+
+nav {
+  display: flex;
+  gap: 28px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #334155;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #0f766e;
+}
+
+.nav-btn,
+.primary-btn,
+.secondary-btn {
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.nav-btn {
+  background: #0f766e;
+  color: white;
+  padding: 12px 20px;
+}
+
+.hero {
+  min-height: 86vh;
+  padding: 70px 8%;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 50px;
+  background: linear-gradient(135deg, #e8f7f4 0%, #fff6e7 100%);
+}
+
+.tagline {
+  color: #d97706;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 58px;
+  line-height: 1.08;
+  margin-bottom: 22px;
+  color: #102a43;
+}
+
+.hero-text {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #475569;
+  max-width: 560px;
+  margin-bottom: 32px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.primary-btn {
+  background: #0f766e;
+  color: white;
+  padding: 15px 26px;
+}
+
+.secondary-btn {
+  border: 2px solid #0f766e;
+  color: #0f766e;
+  padding: 13px 24px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 470px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 24px 50px rgba(15, 118, 110, 0.25);
+}
+
+.features {
+  padding: 70px 8%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.feature-card {
+  background: white;
+  padding: 34px;
+  border-radius: 8px;
+  border-top: 5px solid #0f766e;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.07);
+}
+
+.feature-card h3 {
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.feature-card p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.products {
+  padding: 70px 8%;
+  background: #ffffff;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-heading p {
+  color: #d97706;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  font-size: 40px;
+  margin-top: 8px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.product-card {
+  background: #f8fafc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.12);
+}
+
+.product-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  padding: 22px 22px 8px;
+  font-size: 22px;
+}
+
+.product-card p {
+  padding: 0 22px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.product-card span {
+  display: block;
+  padding: 18px 22px 24px;
+  color: #0f766e;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.cta {
+  margin: 70px 8%;
+  padding: 60px 30px;
+  text-align: center;
+  background: #102a43;
+  color: white;
+  border-radius: 8px;
+}
+
+.cta h2 {
+  font-size: 38px;
+  margin-bottom: 14px;
+}
+
+.cta p {
+  color: #dbeafe;
+  margin-bottom: 26px;
+}
+
+footer {
+  text-align: center;
+  padding: 26px;
+  background: #ffffff;
+  color: #64748b;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .features,
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-image img {
+    height: 340px;
+  }
+}
