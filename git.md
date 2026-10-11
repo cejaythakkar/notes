@@ -1,594 +1,238 @@
-# Git Comprehensive Guide
+# Git Scenario Cheat Sheet
 
-A practical Git guide for day-to-day developer work. It includes the commands you practiced, corrections for a few commands, and extra workflows that are useful in real projects.
+A short guide for common day-to-day Git situations.
 
 ## Index
 
-- [1. What Git Tracks](#1-what-git-tracks)
-- [2. First-Time Setup](#2-first-time-setup)
-- [3. Create or Clone a Repository](#3-create-or-clone-a-repository)
-- [4. Check Status and Add Files](#4-check-status-and-add-files)
-- [5. Commit Changes](#5-commit-changes)
-- [6. View History](#6-view-history)
-- [7. Compare Changes](#7-compare-changes)
-- [8. Restore Files and Undo Mistakes](#8-restore-files-and-undo-mistakes)
-- [9. Branches](#9-branches)
-- [10. Remote Repositories](#10-remote-repositories)
-- [11. Pull, Fetch, Push](#11-pull-fetch-push)
-- [12. Merge and Conflicts](#12-merge-and-conflicts)
-- [13. Stash](#13-stash)
-- [14. Tags](#14-tags)
-- [15. Clean Untracked Files](#15-clean-untracked-files)
-- [16. Protect Main Branch](#16-protect-main-branch)
-- [17. Daily Developer Workflows](#17-daily-developer-workflows)
-- [18. Common Mistake Recipes](#18-common-mistake-recipes)
-- [19. Useful Aliases](#19-useful-aliases)
-- [20. Official References](#20-official-references)
+- [I changed files but want to discard changes](#i-changed-files-but-want-to-discard-changes)
+- [I staged changes by mistake](#i-staged-changes-by-mistake)
+- [I committed by mistake](#i-committed-by-mistake)
+- [I want to change my last commit message](#i-want-to-change-my-last-commit-message)
+- [I forgot to add a file to my last commit](#i-forgot-to-add-a-file-to-my-last-commit)
+- [I committed on the wrong branch](#i-committed-on-the-wrong-branch)
+- [I want to save work temporarily](#i-want-to-save-work-temporarily)
+- [I want to stash only some files](#i-want-to-stash-only-some-files)
+- [I applied stash and got conflicts](#i-applied-stash-and-got-conflicts)
+- [I want to switch branches but Git is stopping me](#i-want-to-switch-branches-but-git-is-stopping-me)
+- [I want to create a new branch](#i-want-to-create-a-new-branch)
+- [I want to push a new branch](#i-want-to-push-a-new-branch)
+- [I want to connect local repo to GitHub](#i-want-to-connect-local-repo-to-github)
+- [I want latest code from main](#i-want-latest-code-from-main)
+- [I want to pull but avoid messy merge commits](#i-want-to-pull-but-avoid-messy-merge-commits)
+- [I have merge conflicts](#i-have-merge-conflicts)
+- [I want to undo a pushed commit safely](#i-want-to-undo-a-pushed-commit-safely)
+- [I deleted a branch or commit by mistake](#i-deleted-a-branch-or-commit-by-mistake)
+- [I want to see what changed](#i-want-to-see-what-changed)
+- [I want to check commit history](#i-want-to-check-commit-history)
+- [I want to find a commit by text](#i-want-to-find-a-commit-by-text)
+- [I want to know who changed a line](#i-want-to-know-who-changed-a-line)
+- [I want to restore one file from old commit](#i-want-to-restore-one-file-from-old-commit)
+- [I want to remove untracked files](#i-want-to-remove-untracked-files)
+- [I want to tag a release](#i-want-to-tag-a-release)
+- [I want to delete branches](#i-want-to-delete-branches)
+- [I want to protect main](#i-want-to-protect-main)
+- [Daily safe workflow](#daily-safe-workflow)
 
 ---
 
-## 1. What Git Tracks
+## I changed files but want to discard changes
 
-Git has three common working areas:
-
-| Area         | Meaning                            |
-| ------------ | ---------------------------------- |
-| Working tree | Your actual files on disk          |
-| Staging area | Files selected for the next commit |
-| Repository   | Saved commits in Git history       |
-
-Common flow:
+If changes are not staged:
 
 ```bash
-edit files
-git status
-git add .
-git commit -m "message"
-git push
+git restore .
 ```
 
----
-
-## 2. First-Time Setup
-
-Set your name and email once:
-
-```bash
-git config --global user.name "Jay Thakkar"
-git config --global user.email "ce.jaythakkar@gmail.com"
-```
-
-Check config:
-
-```bash
-git config --list
-```
-
-Set default branch name to `main`:
-
-```bash
-git config --global init.defaultBranch main
-```
-
----
-
-## 3. Create or Clone a Repository
-
-Create Git tracking in an existing folder:
-
-```bash
-git init
-```
-
-Clone an existing remote repository:
-
-```bash
-git clone https://github.com/cejaythakkar/notes.git
-```
-
-After cloning:
-
-```bash
-cd notes
-git status
-```
-
----
-
-## 4. Check Status and Add Files
-
-Check current state:
-
-```bash
-git status
-```
-
-Add all changed and new files:
-
-```bash
-git add .
-```
-
-Add one file:
-
-```bash
-git add git.md
-```
-
-Add all files using wildcard:
-
-```bash
-git add *
-```
-
-Prefer `git add .` in most cases because it is clearer and handles nested changes from the current folder.
-
-See what is staged:
-
-```bash
-git diff --staged
-```
-
----
-
-## 5. Commit Changes
-
-Commit staged changes:
-
-```bash
-git commit -m "adding git.md"
-```
-
-Another commit:
-
-```bash
-git commit -m "second commit"
-```
-
-Good commit message examples:
-
-```bash
-git commit -m "Add Git notes"
-git commit -m "Fix login validation"
-git commit -m "Update product API response"
-```
-
-Commit message tip:
-
-- Use present tense: `Add`, `Fix`, `Update`, `Remove`
-- Keep it short but meaningful
-- Explain why in the body if needed:
-
-```bash
-git commit -m "Fix checkout total calculation" -m "Discount was applied before tax, causing incorrect final totals."
-```
-
----
-
-## 6. View History
-
-Basic log:
-
-```bash
-git log
-```
-
-One commit per line:
-
-```bash
-git log --pretty=oneline
-```
-
-Short, readable format:
-
-```bash
-git log --pretty=format:"%h - %an, %ar: %s"
-```
-
-Meaning:
-
-| Placeholder | Meaning               |
-| ----------- | --------------------- |
-| `%h`        | Short commit hash     |
-| `%an`       | Author name           |
-| `%ar`       | Author date, relative |
-| `%s`        | Commit subject        |
-
-Show latest 2 commits with patch:
-
-```bash
-git log -p -2
-```
-
-Show file change statistics:
-
-```bash
-git log --stat
-```
-
-Search commit messages:
-
-```bash
-git log --grep="fifth"
-```
-
-Important correction:
-
-```bash
-git log grep="fifth"
-```
-
-is wrong. Use:
-
-```bash
-git log --grep="fifth"
-```
-
-Search code changes containing a string:
-
-```bash
-git log -S "made changes by mistake and added in the staging area"
-```
-
-Filter by date:
-
-```bash
-git log --since="2025-01-01"
-git log --until="2025-01-01"
-```
-
-Filter by author:
-
-```bash
-git log --author="cejaythakkar"
-```
-
-Show a file from a specific commit:
-
-```bash
-git show 089f659:git.md
-```
-
-Show a specific commit:
-
-```bash
-git show 089f659
-```
-
----
-
-## 7. Compare Changes
-
-Show unstaged changes:
-
-```bash
-git diff
-```
-
-Show staged changes:
-
-```bash
-git diff --staged
-```
-
-Compare current branch with `main`:
-
-```bash
-git diff main
-```
-
-Compare two commits:
-
-```bash
-git diff commit_hash_1 commit_hash_2
-```
-
-Compare one file between commits:
-
-```bash
-git diff commit_hash_1 commit_hash_2 -- git.md
-```
-
----
-
-## 8. Restore Files and Undo Mistakes
-
-Restore one file from the working tree:
+For one file:
 
 ```bash
 git restore git.md
 ```
 
-Restore all unstaged changes:
+This removes local uncommitted changes from your working tree.
 
-```bash
-git restore .
-```
+---
 
-Same idea, explicit working tree:
+## I staged changes by mistake
 
-```bash
-git restore --worktree .
-```
-
-Unstage everything:
+If you ran `git add .` by mistake:
 
 ```bash
 git restore --staged .
 ```
 
-Use this when you made changes by mistake and already added them to staging:
+This only unstages the files. Your changes still remain in the files.
+
+If you also want to remove those file changes:
 
 ```bash
 git restore --staged .
 git restore .
 ```
 
-Restore one file from a previous commit:
+---
 
-```bash
-git checkout 0d0b98c2a47d7bdce9a9679cf60c64338e5ce824 -- git.md
-```
+## I committed by mistake
 
-Restore all files from a previous commit:
-
-```bash
-git checkout 0d0b98c2a47d7bdce9a9679cf60c64338e5ce824 -- .
-```
-
-Avoid this unless you are sure:
-
-```bash
-git checkout 0d0b98c2a47d7bdce9a9679cf60c64338e5ce824 -- *
-```
-
-The `.` version is usually safer and clearer.
-
-Hard reset to previous commit:
+If the commit is local and not pushed:
 
 ```bash
 git reset --hard HEAD^
 ```
 
-Warning: this removes local changes and moves the branch back by one commit. Use only when you are sure.
+This removes the latest commit and its changes.
 
-Safer alternative when the commit is already pushed:
+If you want to undo the commit but keep the changes unstaged:
 
 ```bash
-git revert commit_hash
+git reset HEAD^
 ```
 
-`revert` creates a new commit that undoes an old commit. It is safer for shared branches.
+If you want to undo the commit but keep changes staged:
+
+```bash
+git reset --soft HEAD^
+```
+
+Quick meaning:
+
+| Command                  | Commit removed? | Changes kept? |
+| ------------------------ | --------------- | ------------- |
+| `git reset --hard HEAD^` | Yes             | No            |
+| `git reset HEAD^`        | Yes             | Yes, unstaged |
+| `git reset --soft HEAD^` | Yes             | Yes, staged   |
 
 ---
 
-## 9. Branches
+## I want to change my last commit message
 
-Show local branches:
-
-```bash
-git branch
-```
-
-Create a branch:
+If the commit is not pushed yet:
 
 ```bash
-git branch design
+git commit --amend -m "New commit message"
 ```
 
-Switch to a branch:
-
-```bash
-git checkout design
-```
-
-Create and switch in one command:
-
-```bash
-git checkout -b feature/my-change
-```
-
-Modern alternative:
-
-```bash
-git switch -c feature/my-change
-```
-
-Rename current branch to `main`:
-
-```bash
-git branch -M main
-```
-
-Delete a local branch:
-
-```bash
-git branch -d design
-```
-
-Force delete local branch:
-
-```bash
-git branch -D design
-```
-
-List remote branches:
-
-```bash
-git branch -r
-```
-
-List all branches:
-
-```bash
-git branch -a
-```
+If already pushed, avoid amending unless your team is okay with force-push.
 
 ---
 
-## 10. Remote Repositories
+## I forgot to add a file to my last commit
 
-Show remotes:
-
-```bash
-git remote -v
-```
-
-Add remote:
+Add the missing file:
 
 ```bash
-git remote add origin https://github.com/cejaythakkar/notes.git
+git add missing-file.md
 ```
 
-Change remote URL:
+Update the last commit without changing the message:
 
 ```bash
-git remote set-url origin https://github.com/cejaythakkar/notes.git
+git commit --amend --no-edit
 ```
 
-Remove remote:
-
-```bash
-git remote remove origin
-```
+Avoid this if the commit is already pushed and shared.
 
 ---
 
-## 11. Pull, Fetch, Push
+## I committed on the wrong branch
 
-Push current branch:
-
-```bash
-git push
-```
-
-First push for a new local branch:
+Find your commit:
 
 ```bash
-git push -u origin feature/my-change
+git log --oneline
 ```
 
-Push `main` first time:
+Copy the commit hash.
+
+Switch to the correct branch:
 
 ```bash
-git push -u origin main
+git checkout correct-branch
 ```
 
-After upstream is set, use:
+Apply that commit:
 
 ```bash
-git push
+git cherry-pick commit_hash
 ```
 
-Fetch latest remote changes without merging:
+Go back to wrong branch:
 
 ```bash
-git fetch
+git checkout wrong-branch
 ```
 
-Pull latest changes and merge into current branch:
+Remove the mistaken commit:
 
 ```bash
-git pull
+git reset --hard HEAD^
 ```
 
-Pull with rebase:
-
-```bash
-git pull --rebase
-```
-
-Simple rule:
-
-- `fetch` downloads remote updates only
-- `pull` downloads and applies remote updates
-- `push` uploads your commits
+Only do the reset if the commit was not already pushed/shared.
 
 ---
 
-## 12. Merge and Conflicts
+## I want to save work temporarily
 
-Merge another branch into current branch:
-
-```bash
-git merge design
-```
-
-If conflicts happen:
-
-1. Open the conflicted files.
-2. Find conflict markers.
-3. Keep the correct code.
-4. Remove conflict markers.
-5. Add resolved files.
-6. Commit the merge.
-
-Conflict markers look like this:
-
-```text
-<<<<<<< HEAD
-your current branch code
-=======
-incoming branch code
->>>>>>> design
-```
-
-After fixing:
+Use stash:
 
 ```bash
-git add .
-git commit
+git stash push -m "work in progress"
 ```
 
-Abort a merge:
-
-```bash
-git merge --abort
-```
-
----
-
-## 13. Stash
-
-`git stash` temporarily saves uncommitted changes so you can return to a clean working tree.
-
-Stash tracked changes:
-
-```bash
-git stash
-```
-
-Stash with message:
-
-```bash
-git stash push -m "message"
-```
-
-Stash tracked and untracked files:
+Include untracked files too:
 
 ```bash
 git stash -u
 ```
 
-Show stash list:
+See saved stashes:
 
 ```bash
 git stash list
 ```
 
-Apply latest stash but keep it in stash list:
+Bring latest stash back:
 
 ```bash
-git stash apply
+git stash pop
 ```
 
-Apply specific stash:
+Apply a specific stash:
 
 ```bash
 git stash apply stash@{1}
 ```
 
-Apply latest stash and remove it from stash list:
+Clear all stashes:
+
+```bash
+git stash clear
+```
+
+---
+
+## I want to stash only some files
+
+Stash one file:
+
+```bash
+git stash push -m "stash git notes" -- git.md
+```
+
+Stash multiple files:
+
+```bash
+git stash push -m "stash selected files" -- file1.md file2.md
+```
+
+Apply stash but keep it in stash list:
+
+```bash
+git stash apply
+```
+
+Apply and remove from stash list:
 
 ```bash
 git stash pop
@@ -600,85 +244,399 @@ Delete one stash:
 git stash drop stash@{1}
 ```
 
-Clear all stashes:
+---
+
+## I applied stash and got conflicts
+
+Check conflicted files:
 
 ```bash
-git stash clear
+git status
 ```
 
-Common use case:
+Open files, fix conflict markers, then stage:
 
 ```bash
-git stash push -m "work in progress"
+git add .
+```
+
+If you used `git stash pop`, the stash may remain if conflicts happened. Check:
+
+```bash
+git stash list
+```
+
+After everything is resolved, continue working or commit:
+
+```bash
+git commit -m "Apply stashed changes"
+```
+
+---
+
+## I want to switch branches but Git is stopping me
+
+If Git says your local changes would be overwritten, either commit, stash, or discard changes.
+
+Option 1: commit:
+
+```bash
+git add .
+git commit -m "Save current work"
+git checkout other-branch
+```
+
+Option 2: stash:
+
+```bash
+git stash push -m "before switching branch"
+git checkout other-branch
+```
+
+Option 3: discard:
+
+```bash
+git restore .
+git checkout other-branch
+```
+
+---
+
+## I want to create a new branch
+
+Create and switch:
+
+```bash
+git checkout -b feature/my-change
+```
+
+Modern version:
+
+```bash
+git switch -c feature/my-change
+```
+
+---
+
+## I want to push a new branch
+
+First push:
+
+```bash
+git push -u origin feature/my-change
+```
+
+After that:
+
+```bash
+git push
+```
+
+---
+
+## I want to connect local repo to GitHub
+
+Check remotes:
+
+```bash
+git remote -v
+```
+
+Add GitHub remote:
+
+```bash
+git remote add origin https://github.com/username/repo.git
+```
+
+Rename branch to main:
+
+```bash
+git branch -M main
+```
+
+Push first time:
+
+```bash
+git push -u origin main
+```
+
+If remote URL is wrong:
+
+```bash
+git remote set-url origin https://github.com/username/repo.git
+```
+
+---
+
+## I want latest code from main
+
+Go to main:
+
+```bash
 git checkout main
+```
+
+Pull latest:
+
+```bash
 git pull
+```
+
+Update your feature branch with latest main:
+
+```bash
 git checkout feature/my-change
-git stash pop
+git merge main
+```
+
+Alternative using remote main:
+
+```bash
+git fetch origin
+git merge origin/main
 ```
 
 ---
 
-## 14. Tags
+## I want to pull but avoid messy merge commits
 
-List tags:
+Use rebase:
 
 ```bash
-git tag
+git pull --rebase
 ```
 
-Important correction:
+If there are conflicts:
 
 ```bash
-git tags
+git status
 ```
 
-is wrong. Use:
+Fix files, then:
 
 ```bash
-git tag
+git add .
+git rebase --continue
 ```
 
-Create annotated tag:
+Abort rebase:
 
 ```bash
-git tag -a v7 -m "this is v7"
-```
-
-Create annotated tag on a specific commit:
-
-```bash
-git tag -a v6 commit_hash -m "this is v6"
-```
-
-Push all tags:
-
-```bash
-git push origin --tags
-```
-
-Push one tag:
-
-```bash
-git push origin v7
-```
-
-Delete local tag:
-
-```bash
-git tag -d v7
-```
-
-Delete remote tag:
-
-```bash
-git push origin --delete v7
+git rebase --abort
 ```
 
 ---
 
-## 15. Clean Untracked Files
+## I have merge conflicts
 
-Preview files Git will remove:
+Git will show conflicted files.
+
+Check status:
+
+```bash
+git status
+```
+
+Open the files and look for:
+
+```text
+<<<<<<< HEAD
+your current branch changes
+=======
+incoming branch changes
+>>>>>>> branch-name
+```
+
+Fix the file manually.
+
+Then:
+
+```bash
+git add .
+git commit
+```
+
+If you want to cancel the merge:
+
+```bash
+git merge --abort
+```
+
+If conflict happened during rebase:
+
+```bash
+git rebase --abort
+```
+
+After fixing conflict during rebase:
+
+```bash
+git add .
+git rebase --continue
+```
+
+---
+
+## I want to undo a pushed commit safely
+
+Use `revert`, not `reset`.
+
+```bash
+git revert commit_hash
+git push
+```
+
+This creates a new commit that undoes the old commit.
+
+Use this for shared branches like `main`.
+
+---
+
+## I deleted a branch or commit by mistake
+
+Use reflog:
+
+```bash
+git reflog
+```
+
+Find the lost commit hash, then create a branch from it:
+
+```bash
+git checkout -b recovered-work commit_hash
+```
+
+This is useful when you reset, deleted a branch, or lost local commits.
+
+---
+
+## I want to see what changed
+
+Unstaged changes:
+
+```bash
+git diff
+```
+
+Staged changes:
+
+```bash
+git diff --staged
+```
+
+Changed files summary:
+
+```bash
+git status
+```
+
+---
+
+## I want to check commit history
+
+Normal log:
+
+```bash
+git log
+```
+
+Short log:
+
+```bash
+git log --oneline
+```
+
+Pretty log:
+
+```bash
+git log --pretty=format:"%h - %an, %ar: %s"
+```
+
+Last 2 commits with actual changes:
+
+```bash
+git log -p -2
+```
+
+Commit stats:
+
+```bash
+git log --stat
+```
+
+---
+
+## I want to find a commit by text
+
+Search commit messages:
+
+```bash
+git log --grep="fifth"
+```
+
+Search code changes:
+
+```bash
+git log -S "made changes by mistake and added in the staging area"
+```
+
+Search by author:
+
+```bash
+git log --author="cejaythakkar"
+```
+
+Search by date:
+
+```bash
+git log --since="2025-01-01"
+git log --until="2025-01-01"
+```
+
+---
+
+## I want to know who changed a line
+
+Use blame:
+
+```bash
+git blame git.md
+```
+
+For a specific line range:
+
+```bash
+git blame -L 10,20 git.md
+```
+
+---
+
+## I want to restore one file from old commit
+
+Restore one file from a commit:
+
+```bash
+git checkout commit_hash -- git.md
+```
+
+Example:
+
+```bash
+git checkout 0d0b98c2a47d7bdce9a9679cf60c64338e5ce824 -- git.md
+```
+
+Then commit the restored file:
+
+```bash
+git add git.md
+git commit -m "Restore git.md from old commit"
+```
+
+---
+
+## I want to remove untracked files
+
+Preview first:
 
 ```bash
 git clean -n
@@ -696,25 +654,69 @@ Remove untracked files and folders:
 git clean -fd
 ```
 
-Remove ignored files too:
+Be careful. `git clean` deletes files that Git is not tracking.
+
+---
+
+## I want to tag a release
+
+List tags:
 
 ```bash
-git clean -fdx
+git tag
 ```
 
-Warning: `git clean` deletes untracked files. Always run preview first:
+Create tag:
 
 ```bash
-git clean -n
+git tag -a v1.0.0 -m "Release v1.0.0"
+```
+
+Create tag on specific commit:
+
+```bash
+git tag -a v1.0.0 commit_hash -m "Release v1.0.0"
+```
+
+Push one tag:
+
+```bash
+git push origin v1.0.0
+```
+
+Push all tags:
+
+```bash
+git push origin --tags
 ```
 
 ---
 
-## 16. Protect Main Branch
+## I want to delete branches
 
-On GitHub, protect `main` so nobody pushes directly.
+Delete local branch after merge:
 
-Classic branch protection:
+```bash
+git branch -d feature/my-task
+```
+
+Force delete local branch:
+
+```bash
+git branch -D feature/my-task
+```
+
+Delete remote branch:
+
+```bash
+git push origin --delete feature/my-task
+```
+
+---
+
+## I want to protect main
+
+On GitHub:
 
 ```text
 Repository -> Settings -> Branches -> Add branch protection rule
@@ -724,207 +726,57 @@ Enable: Require approvals
 Save
 ```
 
-Newer GitHub rulesets:
-
-```text
-Repository -> Settings -> Rules -> Rulesets -> New branch ruleset
-Target branch: main
-Require pull request before merging
-Save
-```
-
-Useful options:
-
-- Require pull request before merging
-- Require approvals
-- Require status checks to pass before merging
-- Do not allow bypassing the above settings
-
-Status checks usually appear after you have CI configured, for example GitHub Actions.
-
----
-
-## 17. Daily Developer Workflows
-
-### Start New Feature
+After this, work like this:
 
 ```bash
 git checkout main
 git pull
-git checkout -b feature/login-page
-```
-
-Work, then:
-
-```bash
-git status
+git checkout -b feature/my-change
 git add .
-git commit -m "Add login page"
-git push -u origin feature/login-page
+git commit -m "Add my change"
+git push -u origin feature/my-change
 ```
 
 Then open a pull request into `main`.
 
-### Continue Existing Feature
+---
 
-```bash
-git checkout feature/login-page
-git pull
-git status
-```
+## Daily safe workflow
 
-### Update Feature Branch with Latest Main
-
-Option 1: merge:
-
-```bash
-git checkout feature/login-page
-git fetch origin
-git merge origin/main
-```
-
-Option 2: rebase:
-
-```bash
-git checkout feature/login-page
-git fetch origin
-git rebase origin/main
-```
-
-Use merge if you want simpler history handling. Use rebase if your team prefers cleaner linear history.
-
-### Finish Feature
+Start work:
 
 ```bash
 git checkout main
 git pull
-git branch -d feature/login-page
+git checkout -b feature/my-task
 ```
 
-Delete remote branch:
+Check changes:
 
 ```bash
-git push origin --delete feature/login-page
+git status
+git diff
 ```
 
----
-
-## 18. Common Mistake Recipes
-
-### I changed files by mistake but did not stage them
+Commit:
 
 ```bash
-git restore .
+git add .
+git commit -m "Describe the change"
 ```
 
-### I changed files by mistake and staged them
+Push:
 
 ```bash
-git restore --staged .
-git restore .
+git push -u origin feature/my-task
 ```
 
-### I committed on the wrong branch
+Open PR.
 
-Save the commit hash:
+After PR merge:
 
 ```bash
-git log --oneline
+git checkout main
+git pull
+git branch -d feature/my-task
 ```
-
-Switch to the correct branch and cherry-pick:
-
-```bash
-git checkout correct-branch
-git cherry-pick commit_hash
-```
-
-Go back to wrong branch and remove commit:
-
-```bash
-git checkout wrong-branch
-git reset --hard HEAD^
-```
-
-Be careful if the wrong branch was already pushed.
-
-### I forgot to add one file to the last commit
-
-```bash
-git add missing-file.md
-git commit --amend
-```
-
-If you only want to update the commit without changing message:
-
-```bash
-git commit --amend --no-edit
-```
-
-### I want to undo a pushed commit safely
-
-```bash
-git revert commit_hash
-git push
-```
-
-### I want to see who changed a line
-
-```bash
-git blame git.md
-```
-
-### I want to find when text was added or removed
-
-```bash
-git log -S "some text"
-```
-
-### I want to recover a lost commit
-
-```bash
-git reflog
-```
-
-Then:
-
-```bash
-git checkout commit_hash
-```
-
-or create a branch from it:
-
-```bash
-git checkout -b recovered-work commit_hash
-```
-
----
-
-## 19. Useful Aliases
-
-Add shortcuts:
-
-```bash
-git config --global alias.st status
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.cm commit
-git config --global alias.lg "log --pretty=format:'%h - %an, %ar: %s'"
-```
-
-Then use:
-
-```bash
-git st
-git lg
-```
-
----
-
-## 20. Official References
-
-- [Git official documentation](https://git-scm.com/docs/git)
-- [Git official cheat sheet](https://git-scm.com/cheat-sheet)
-- [GitHub Docs: Pushing commits to a remote repository](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository)
-- [GitHub Docs: Protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches)
-- [GitHub Docs: Pull requests](https://docs.github.com/en/pull-requests)
