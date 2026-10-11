@@ -36,4 +36,3 @@ git branch design
 git checkout design
 
 conflicts
-
