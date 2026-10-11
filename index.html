@@ -1,107 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NovaMart</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jay Thakkar | Senior Fullstack Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <header class="navbar">
-        <div class="logo">NovaMart</div>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
 
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Products</a>
-            <a href="#">Deals</a>
-            <a href="#">Contact</a>
-        </nav>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Jay Thakkar home">
+      <span>JT</span>
+      <strong>Jay Thakkar</strong>
+    </a>
 
-        <a href="#" class="nav-btn">Shop Now</a>
-    </header>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#projects">Projects</a>
+      <a href="#personal">Personal</a>
+    </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <p class="tagline">Fresh arrivals every week</p>
-            <h1>Discover products that make life easier.</h1>
-            <p class="hero-text">
-                Shop handpicked essentials, trending gadgets, and everyday favorites
-                with fast delivery and trusted quality.
-            </p>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark and light mode">
+      <span class="toggle-icon">☀</span>
+    </button>
+  </header>
 
-            <div class="hero-actions">
-                <a href="#" class="primary-btn">Explore Products</a>
-                <a href="#" class="secondary-btn">View Deals</a>
+  <main>
+    <section class="hero section-shell" id="home">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Senior Fullstack Engineer</p>
+        <h1>Building scalable enterprise platforms from polished UI to resilient backend systems.</h1>
+        <p class="hero-text">
+          I am a full-stack engineer with 12+ years of experience across React, Node.js,
+          microservices, DevOps, security remediation, customer-facing engineering, and
+          enterprise platform modernization.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">View Projects</a>
+          <a class="button button-secondary" href="mailto:ce.jaythakkar@gmail.com">Contact Me</a>
+        </div>
+
+        <div class="hero-stats" aria-label="Career highlights">
+          <div>
+            <strong>12+</strong>
+            <span>Years Experience</span>
+          </div>
+          <div>
+            <strong>3</strong>
+            <span>Core Services Owned</span>
+          </div>
+          <div>
+            <strong>Fullstack</strong>
+            <span>Frontend, Backend, DevOps</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="profile-card">
+          <div class="profile-top">
+            <div class="avatar">JT</div>
+            <div>
+              <h2>Jay Thakkar</h2>
+              <p>Architecting enterprise-grade applications</p>
             </div>
-        </div>
+          </div>
 
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
-                alt="Modern shopping products" />
+          <div class="system-map">
+            <span>React</span>
+            <span>Node.js</span>
+            <span>SQL</span>
+            <span>Docker</span>
+            <span>Kubernetes</span>
+            <span>AWS</span>
+          </div>
+
+          <div class="code-card">
+            <div class="code-line wide"></div>
+            <div class="code-line medium"></div>
+            <div class="code-line short"></div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section class="features">
-        <div class="feature-card">
-            <h3>Fast Delivery</h3>
-            <p>Get your favorite products delivered quickly and safely.</p>
-        </div>
-
-        <div class="feature-card">
-            <h3>Best Quality</h3>
-            <p>Every item is checked and selected for reliable performance.</p>
-        </div>
-
-        <div class="feature-card">
-            <h3>Great Prices</h3>
-            <p>Enjoy exciting deals and affordable prices every day.</p>
-        </div>
+    <section class="about section-shell" id="about">
+      <div class="section-heading reveal">
+        <p class="eyebrow">About</p>
+        <h2>Technical owner, mentor, and enterprise problem solver.</h2>
+      </div>
+      <div class="about-grid">
+        <article class="glass-panel reveal">
+          <h3>Engineering Depth</h3>
+          <p>
+            Experienced in building reusable frontend systems, designing Node.js
+            microservices, integrating REST APIs, and improving code quality in
+            large enterprise products.
+          </p>
+        </article>
+        <article class="glass-panel reveal">
+          <h3>Platform Thinking</h3>
+          <p>
+            Hands-on with Docker, Kubernetes, Linux, shell scripting, Swagger/OpenAPI,
+            MongoDB to SQL migrations, and production deployment support.
+          </p>
+        </article>
+        <article class="glass-panel reveal">
+          <h3>Customer Focus</h3>
+          <p>
+            Works directly with enterprise customers on JSON-based configurations,
+            production issues, knowledge transfer, mentoring, and continuous service
+            improvement.
+          </p>
+        </article>
+      </div>
     </section>
 
-    <section class="products">
-        <div class="section-heading">
-            <p>Popular Picks</p>
-            <h2>Featured Products</h2>
-        </div>
+    <section class="skills section-shell" id="skills">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Skills</p>
+        <h2>Bifurcated skill map with practical ratings.</h2>
+      </div>
 
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=600&q=80"
-                    alt="Headphones" />
-                <h3>Wireless Headphones</h3>
-                <p>Crystal clear sound with long battery life.</p>
-                <span>$59.99</span>
-            </div>
+      <div class="skills-grid">
+        <article class="skill-group reveal">
+          <h3>Frontend</h3>
+          <div class="skill-item"><span>React.js</span><div class="bar"><i style="--level: 94%"></i></div><strong>94%</strong></div>
+          <div class="skill-item"><span>Redux</span><div class="bar"><i style="--level: 90%"></i></div><strong>90%</strong></div>
+          <div class="skill-item"><span>HTML5 / CSS3</span><div class="bar"><i style="--level: 92%"></i></div><strong>92%</strong></div>
+          <div class="skill-item"><span>Tailwind / SCSS</span><div class="bar"><i style="--level: 84%"></i></div><strong>84%</strong></div>
+        </article>
 
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
-                    alt="Watch" />
-                <h3>Smart Watch</h3>
-                <p>Track fitness, calls, and notifications easily.</p>
-                <span>$89.99</span>
-            </div>
+        <article class="skill-group reveal">
+          <h3>Backend</h3>
+          <div class="skill-item"><span>Node.js</span><div class="bar"><i style="--level: 91%"></i></div><strong>91%</strong></div>
+          <div class="skill-item"><span>Express / REST APIs</span><div class="bar"><i style="--level: 88%"></i></div><strong>88%</strong></div>
+          <div class="skill-item"><span>FastAPI / Python</span><div class="bar"><i style="--level: 78%"></i></div><strong>78%</strong></div>
+          <div class="skill-item"><span>Microservices</span><div class="bar"><i style="--level: 87%"></i></div><strong>87%</strong></div>
+        </article>
 
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1585386959984-a4155223168f?auto=format&fit=crop&w=600&q=80"
-                    alt="Perfume" />
-                <h3>Luxury Perfume</h3>
-                <p>A fresh fragrance for everyday confidence.</p>
-                <span>$39.99</span>
-            </div>
-        </div>
+        <article class="skill-group reveal">
+          <h3>Database</h3>
+          <div class="skill-item"><span>MongoDB</span><div class="bar"><i style="--level: 86%"></i></div><strong>86%</strong></div>
+          <div class="skill-item"><span>PostgreSQL</span><div class="bar"><i style="--level: 82%"></i></div><strong>82%</strong></div>
+          <div class="skill-item"><span>MySQL</span><div class="bar"><i style="--level: 78%"></i></div><strong>78%</strong></div>
+          <div class="skill-item"><span>Redis</span><div class="bar"><i style="--level: 70%"></i></div><strong>70%</strong></div>
+        </article>
+
+        <article class="skill-group reveal">
+          <h3>DevOps & Tools</h3>
+          <div class="skill-item"><span>Docker</span><div class="bar"><i style="--level: 86%"></i></div><strong>86%</strong></div>
+          <div class="skill-item"><span>Kubernetes</span><div class="bar"><i style="--level: 78%"></i></div><strong>78%</strong></div>
+          <div class="skill-item"><span>Linux / Shell</span><div class="bar"><i style="--level: 82%"></i></div><strong>82%</strong></div>
+          <div class="skill-item"><span>Git / GitHub Actions</span><div class="bar"><i style="--level: 84%"></i></div><strong>84%</strong></div>
+        </article>
+      </div>
     </section>
 
-    <section class="cta">
-        <h2>Ready to upgrade your everyday shopping?</h2>
-        <p>Find top-rated products at prices you’ll love.</p>
-        <a href="#" class="primary-btn">Start Shopping</a>
+    <section class="timeline section-shell" id="timeline">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Timeline</p>
+        <h2>Career progression across enterprise engineering teams.</h2>
+      </div>
+
+      <div class="timeline-track">
+        <article class="timeline-item reveal">
+          <span class="timeline-date">May 2021 - Present</span>
+          <h3>Senior Fullstack Engineer</h3>
+          <p>iBaset Pvt. Ltd.</p>
+          <small>Enterprise MES, Node.js microservices, Configurator Tool, DevOps, security remediation, and customer-facing technical ownership.</small>
+        </article>
+        <article class="timeline-item reveal">
+          <span class="timeline-date">Jul 2019 - May 2021</span>
+          <h3>Fullstack Developer</h3>
+          <p>Cygnet Infotech Pvt. Ltd.</p>
+          <small>Lead full-stack development across J2 Global, Catalyst Console, and Genes2Teens using React, Redux, Node.js, testing, and REST APIs.</small>
+        </article>
+        <article class="timeline-item reveal">
+          <span class="timeline-date">Jun 2018 - Jul 2019</span>
+          <h3>UI Developer</h3>
+          <p>Plumslice Labs Pvt. Ltd.</p>
+          <small>React, Redux, Angular 4, campaign platforms, marketplace capabilities, theming, and frontend architecture.</small>
+        </article>
+        <article class="timeline-item reveal">
+          <span class="timeline-date">Jul 2014 - Jun 2018</span>
+          <h3>Frontend Developer</h3>
+          <p>Asite Solutions India Pvt. Ltd.</p>
+          <small>Enterprise construction collaboration, document management, file upload modules, workflow automation, AngularJS, jQuery, and WebSockets.</small>
+        </article>
+      </div>
     </section>
 
-    <footer>
-        <p>© 2026 NovaMart. All rights reserved.</p>
-    </footer>
+    <section class="projects section-shell" id="projects">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Company-wise Projects</p>
+        <h2>Enterprise work grouped by company.</h2>
+      </div>
+
+      <div class="company-projects">
+        <article class="company-card reveal">
+          <div class="company-head">
+            <span>iBaset</span>
+            <strong>Current Enterprise Platform Work</strong>
+          </div>
+          <div class="project-list">
+            <div>
+              <h3>Solumina i-Series</h3>
+              <p>Enterprise manufacturing execution system with scalable React modules, reusable component library work, REST API integration, Redux Saga, Context, Hooks, and monorepo collaboration.</p>
+            </div>
+            <div>
+              <h3>Notification Server</h3>
+              <p>Business-critical Node.js microservice with architecture contributions, MongoDB to SQL migration utilities, Swagger/OpenAPI documentation, VAPT and Snyk remediation, and Linux deployments.</p>
+            </div>
+            <div>
+              <h3>JSReport Server</h3>
+              <p>Enterprise reporting service focused on document generation, backend modernization, API documentation, deployment automation, security compliance, and production optimization.</p>
+            </div>
+            <div>
+              <h3>Configurator Tool</h3>
+              <p>JSON-driven dashboard configuration platform with reusable UI, backend modules, customer configurations, technical ownership, mentoring, and platform stability improvements.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="company-card reveal">
+          <div class="company-head">
+            <span>Cygnet Infotech</span>
+            <strong>Lead Fullstack Delivery</strong>
+          </div>
+          <div class="project-list">
+            <div>
+              <h3>J2 Global</h3>
+              <p>Enterprise web platform with end-to-end feature development, reusable React components, Redux state management, REST integration, performance work, and production support.</p>
+            </div>
+            <div>
+              <h3>Catalyst Console</h3>
+              <p>Enterprise administration platform with React and Redux architecture, Storybook components, Jest and Enzyme test coverage, and component-driven frontend leadership.</p>
+            </div>
+            <div>
+              <h3>Genes2Teens</h3>
+              <p>Healthcare and wellness platform with full-stack feature delivery, responsive React interfaces, Node.js services, REST APIs, stakeholder collaboration, and performance optimization.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="company-card reveal">
+          <div class="company-head">
+            <span>Plumslice Labs</span>
+            <strong>UI Architecture & Campaign Platforms</strong>
+          </div>
+          <div class="project-list">
+            <div>
+              <h3>FirstHandle</h3>
+              <p>Marketing automation platform built from the ground up using React and Redux, reusable UI components, API integration, state management, and responsive architecture.</p>
+            </div>
+            <div>
+              <h3>WeeGreen Campaign</h3>
+              <p>Campaign management platform using Angular 4, reusable components, performance improvements, and a multi-tenant theming engine with Stylus and Jade.</p>
+            </div>
+            <div>
+              <h3>WeeGreen Marketplace</h3>
+              <p>E-commerce features including catalog upload, catalog download, paginated listings, notifications, jQuery workflows, and reusable frontend modules.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="company-card reveal">
+          <div class="company-head">
+            <span>Asite Solutions</span>
+            <strong>Enterprise SaaS Frontend</strong>
+          </div>
+          <div class="project-list">
+            <div>
+              <h3>Adoddle</h3>
+              <p>Construction collaboration and document management platform with file upload ownership, bulk uploads, chunked uploads, custom attributes, folder automation, theming, and UI modernization.</p>
+            </div>
+            <div>
+              <h3>Adoddle Workflows</h3>
+              <p>Workflow automation platform with dynamic interfaces, configurable business workflows, REST integration, reusable JavaScript modules, WebSocket-driven collaboration, and performance tuning.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="personal section-shell" id="personal">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Personal Projects</p>
+        <h2>Independent product ownership beyond client work.</h2>
+      </div>
+
+      <article class="personal-card reveal">
+        <div class="personal-content">
+          <p class="eyebrow">Portfolio Builder Platform</p>
+          <h3>Full-stack SaaS for creating and publishing portfolio websites without code.</h3>
+          <p>
+            Independently architected and developed a portfolio builder with profile management,
+            experience, projects, skills, education, contact details, social profiles, real-time
+            public portfolio updates, a React frontend, FastAPI backend, MongoDB models, and
+            Vercel deployment.
+          </p>
+          <div class="tag-cloud">
+            <span>React.js</span>
+            <span>FastAPI</span>
+            <span>Python</span>
+            <span>MongoDB</span>
+            <span>REST APIs</span>
+            <span>Vercel</span>
+          </div>
+        </div>
+        <div class="personal-metrics">
+          <div><strong>100%</strong><span>Product Ownership</span></div>
+          <div><strong>CRUD</strong><span>Dashboard Modules</span></div>
+          <div><strong>Live</strong><span>Portfolio Updates</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="contact section-shell" id="contact">
+      <div class="contact-card reveal">
+        <p class="eyebrow">Let us connect</p>
+        <h2>Open to engineering conversations, knowledge sharing, and scalable product work.</h2>
+        <div class="contact-links">
+          <a href="mailto:ce.jaythakkar@gmail.com">ce.jaythakkar@gmail.com</a>
+          <a href="https://github.com/cejaythakkar" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/jay-thakkar-484099161" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Designed for Jay Thakkar - Senior Fullstack Engineer</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
