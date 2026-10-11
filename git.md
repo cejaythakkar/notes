@@ -16,3 +16,10 @@ git restore --staged .
 git status
 git restore .
 git restore --worktree .
+git reset --hard HEAD^
+git log -p -2
+git log --stat
+git log --pretty=oneline
+git log --pretty=format:"%h - %an,%ar:%s"
+git show 089f659:git.md
+git log -S "made changes by mistake and added in the staging area"
