@@ -15,3 +15,4 @@ made changes by mistake and added in the staging area
 git restore --staged .
 git status
 git restore .
+git restore --worktree .
