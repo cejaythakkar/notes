@@ -36,4 +36,23 @@ git branch design
 git checkout design
 
 conflicts
+git clean -n
+git clean -f
 
+git tags
+
+git tag -a v7 -m "this is v7"
+
+git tag -a v6 -m "this is v6" commit_hash
+
+git push origin --tags
+git stash temporarily saves your uncommitted changes so you can return to a clean working tree.
+git stash push -m "message"
+
+git stash apply stash@{1}
+git stash apply
+git stash clear
+
+git stash pop
+
+git stash list
