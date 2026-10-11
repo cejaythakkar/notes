@@ -31,3 +31,4 @@ git branch -M main
 git push
 git remote -v
 git pull
+git clone https://github.com/cejaythakkar/notes.git
