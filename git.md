@@ -27,3 +27,7 @@ git log grep="fifth"
 git log --since="2025-01-01"
 git log --until="2025-01-01"
 git log --author="cejaythakkar"
+git branch -M main
+git push
+git remote -v
+git pull
