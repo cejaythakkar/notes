@@ -34,3 +34,5 @@ git pull
 git clone https://github.com/cejaythakkar/notes.git
 git branch design
 git checkout design
+
+khaman dhokla
